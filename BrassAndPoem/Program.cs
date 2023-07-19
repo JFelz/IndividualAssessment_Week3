@@ -1,6 +1,5 @@
 ﻿
-void ViewProductDetails()
-{
+
     //create a "products" variable here to include at least five Product instances. Give them appropriate ProductTypeIds.
 
     List<Product> products = new List<Product>()
@@ -54,24 +53,23 @@ void ViewProductDetails()
         }
     };
 
-
-
     //put your greeting here
 
     string greeting = @"Welcome to Brass&Poems!
-    We provide the musical notes and tools for you, just bring the talent!";
+We provide the musical notes and tools for you, just bring the talent!
+";
 
     Console.WriteLine(greeting);
 
-    //implement your loop here
+//implement your loop here
 
-    for (int i = 0; i < products.Count; i++)
+for (int i = 0; i < products.Count; i++)
     {
-        Console.WriteLine($@"{i + 1}. {products[i]}");
-    }
-
+        Console.WriteLine($@"{i + 1}. {products[i].Name}");
 }
-    void DisplayMenu()
+
+
+void DisplayMenu()
     {
         throw new NotImplementedException();
     }
