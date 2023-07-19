@@ -64,9 +64,33 @@ We provide the musical notes and tools for you, just bring the talent!
 //implement your loop here
 
 for (int i = 0; i < products.Count; i++)
-    {
+{
         Console.WriteLine($@"{i + 1}. {products[i].Name}");
 }
+
+
+Product chosenProduct = null;
+
+while (chosenProduct == null)
+{
+    Console.WriteLine("Please choose a product number!");
+    try
+    {
+        int response = int.Parse(Console.ReadLine().Trim());
+        chosenProduct = products[response - 1];
+        Console.WriteLine($"You chose {products[response - 1].Name}");
+    }
+    catch (ArgumentOutOfRangeException)
+    {
+        Console.WriteLine("Try again! Choose a number between 1 and 5!");
+    }
+    catch (FormatException)
+    {
+        Console.WriteLine("Try again! Choose only an integer type of response.");
+    }
+}
+
+
 
 
 void DisplayMenu()
