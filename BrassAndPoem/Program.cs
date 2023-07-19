@@ -61,6 +61,8 @@ void ViewProductDetails()
     string greeting = @"Welcome to Brass&Poems!
     We provide the musical notes and tools for you, just bring the talent!";
 
+    Console.WriteLine(greeting);
+
     //implement your loop here
 
     for (int i = 0; i < products.Count; i++)
