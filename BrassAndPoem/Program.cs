@@ -68,39 +68,49 @@ for (int i = 0; i < products.Count; i++)
         Console.WriteLine($@"{i + 1}. {products[i].Name}");
 }
 
-
+//This will be checked off by the while loop until it is false. This is before the user adds an input response.
 Product chosenProduct = null;
 
 while (chosenProduct == null)
 {
+    //While the user hasnt put in an answer, it will display this message and TRY to receive a response from you.
     Console.WriteLine("Please choose a product number!");
     try
     {
         int response = int.Parse(Console.ReadLine().Trim());
         chosenProduct = products[response - 1];
-        Console.WriteLine($"You chose {products[response - 1].Name}");
+        Console.WriteLine($"You chose {chosenProduct.Name}");
     }
     catch (ArgumentOutOfRangeException)
     {
+        //These catch calls will shoot off and then revert back to the TRY call again.
         Console.WriteLine("Try again! Choose a number between 1 and 5!");
     }
     catch (FormatException)
     {
+        //These catch calls will shoot off and then revert back to the TRY call again.
         Console.WriteLine("Try again! Choose only an integer type of response.");
     }
 }
 
 
-
-
 void DisplayMenu()
     {
-        throw new NotImplementedException();
-    }
+    Console.WriteLine(@"
+1. Display all products
+2. Delete a product
+3. Add a new product
+4. Update product properties
+5. Exit ");
+}
 
     void DisplayAllProducts(List<Product> products, List<ProductType> productTypes)
     {
-        throw new NotImplementedException();
+            for (int i = 0; i < products.Count; i++)
+        {
+            Console.WriteLine(@$"{i + 1}. {products[i].Name} for {products[i].Price}");
+            //To implement productType, must use Linq method. Research before proceeding.
+        }
     }
 
     void DeleteProduct(List<Product> products, List<ProductType> productTypes)
