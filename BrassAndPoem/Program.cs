@@ -2,6 +2,7 @@
 
 //create a "products" variable here to include at least five Product instances. Give them appropriate ProductTypeIds.
 
+
 List<Product> products = new List<Product>()
     {
     new Product()
@@ -105,7 +106,7 @@ while (response < 5)
                 Console.WriteLine(@$"{i + 1}. {products[i].Name} for {products[i].Price}, ProductTypeID: {products[i].ProductTypeId}");
                 //To implement productType, must use Linq method. Research before proceeding.
             }
-        
+    DisplayMenu();
     }
 
     void DeleteProduct(List<Product> products, List<ProductType> productTypes)
@@ -149,8 +150,6 @@ while (response < 5)
         int indexUpdate = int.Parse(Console.ReadLine().Trim());
     if (indexUpdate > 0)
     {
-        // Loop through the array to find all the products indexes and then match that indexed object to the response.
-        // Check if the expression is true
 
         Product productUpdate = products[indexUpdate - 1];
         Console.WriteLine($"Enter the new name for {productUpdate.Name}");
@@ -159,17 +158,22 @@ while (response < 5)
         {
             productUpdate.Name = nameUpdated;
         }
-        Console.WriteLine($"Enter the new price range for {productUpdate.Name}");
-        decimal priceUpdated = decimal.Parse(Console.ReadLine().Trim());
-        if (priceUpdated > 0)
+        else
         {
-            productUpdate.Price = priceUpdated;
+
+        }
+        Console.WriteLine($"Enter the new price range for {productUpdate.Name}");
+        string priceUpdated = Console.ReadLine().Trim();
+        if (!string.IsNullOrWhiteSpace(nameUpdated))
+        {   
+
+            productUpdate.Price = decimal.Parse(priceUpdated);
         }
         Console.WriteLine($"Enter the new productID for {productUpdate.Name}");
-        int updatedID = int.Parse(Console.ReadLine().Trim());
-        if (updatedID == 1 || updatedID == 2) 
+        string updatedID = Console.ReadLine().Trim();
+        if (updatedID == "1" || updatedID == "2") 
         {
-            productUpdate.ProductTypeId = updatedID;
+            productUpdate.ProductTypeId = int.Parse(updatedID);
         }
         Console.WriteLine(@"Product updated successfully!
         ");
@@ -178,10 +182,6 @@ while (response < 5)
     {
         Console.WriteLine("Please enter a valid index!");
     }
-
-    // If expression is true: Give option to update name and price
-
-    //Change the parameters of that object and push back to Array. Dont use a LINQ method that doesnt change the original array.
 
 
 
